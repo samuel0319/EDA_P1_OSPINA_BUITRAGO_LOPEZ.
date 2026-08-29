@@ -1,5 +1,5 @@
-#ifndef QUEUE_CIRCULAR_HPP
-#define QUEUE_CIRCULAR_HPP
+#ifndef colaCircular_hpp
+#define colaCircular_hpp
 
 class colaCircular
 {
