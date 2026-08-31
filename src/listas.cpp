@@ -1,121 +1,91 @@
 #include "listas.hpp"
 #include <iostream>
 
-listas :: listas(){
-    cabeza = nullptr;
-    cola = nullptr;
+listas::listas(){
+    head = nullptr;
+    tail = nullptr;
     count = 0;
 }
 
-listas :: ~listas (){
-    int valor;
-        while (dequeue(valor)){
-
-        }
+listas::~listas(){
+    int value;
+    while (dequeue(value)){
+    }
 }
 
-bool listas::isEmpty() const
-{
-    return cabeza == nullptr;
+bool listas::isEmpty() const{
+    return head == nullptr;
 }
 
-bool listas::enqueue(int value)
-{
-
+bool listas::enqueue(int value){
     Nodo *newNode = new Nodo;
-
     newNode->data = value;
     newNode->next = nullptr;
 
-    if (isEmpty())
-    {
-
-        cabeza = newNode;
-        cola = newNode;
+    if (isEmpty()){
+        head = newNode;
+        tail = newNode;
     }
-    else
-    {
-
-        cola->next = newNode;
-        cola = newNode;
+    else{
+        tail->next = newNode;
+        tail = newNode;
     }
 
     count++;
-
     return true;
 }
 
-bool listas::dequeue(int &value)
-{
+bool listas::dequeue(int &value){
 
-    if (isEmpty())
-    {
+    if (isEmpty()){
         return false;
     }
 
-    Nodo *temp = cabeza;
+    Nodo *temp = head;
+    value = head->data;
 
-    value = cabeza->data;
-
-    cabeza = cabeza->next;
+    head = head->next;
 
     delete temp;
-
     count--;
 
-    if (cabeza == nullptr)
-    {
-        cola = nullptr;
+    if (head == nullptr){
+        tail = nullptr;
     }
 
     return true;
 }
 
-int listas::front() const
-{
-
-    if (isEmpty())
-    {
+int listas::front() const{
+    if (isEmpty()){
         return -1;
     }
-
-    return cabeza->data;
+    return head->data;
 }
 
-int listas::rear() const
-{
-
-    if (isEmpty())
-    {
+int listas::rear() const{
+    if (isEmpty()){
         return -1;
     }
-
-    return cola->data;
+    return tail->data;
 }
 
-int listas::size() const
-{
+int listas::size() const{
     return count;
 }
 
-void listas::print() const
-{
+void listas::print() const{
+    Nodo *current = head;
 
-    Nodo *current = cabeza;
-
-    if (isEmpty())
-    {
+    if (isEmpty()){
         std::cout << "[vacia]\n";
         return;
     }
 
     std::cout << "[ ";
 
-    while (current != nullptr)
-    {
-
+    while (current != nullptr){
         std::cout << current->data << " ";
-
         current = current->next;
     }
 

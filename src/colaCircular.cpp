@@ -1,8 +1,7 @@
 #include <iostream>
 #include "colaCircular.hpp"
 
-colaCircular::colaCircular(int capacity)
-{
+colaCircular::colaCircular(int capacity){
     this->capacity = capacity;
         data = new int[capacity];
 
@@ -11,54 +10,47 @@ colaCircular::colaCircular(int capacity)
             count = 0;
 }
 
-colaCircular::~colaCircular()
-{
+colaCircular::~colaCircular(){
     delete[] data;
 }
 
-bool colaCircular::isEmpty() const
-{
+bool colaCircular::isEmpty() const{
     return count == 0;
 }
 
-bool colaCircular::isFull() const
-{
+bool colaCircular::isFull() const{
     return count == capacity;
 }
 
-bool colaCircular::enqueue(int value)
-{
+bool colaCircular::enqueue(int value){
 
     if (isFull()){
         return false;
     }
 
-        data[tail] = value;
+    data[tail] = value;
 
-            tail = (tail + 1) % capacity;
+        tail = (tail + 1) % capacity;
 
     count++;
 
     return true;
 }
 
-bool colaCircular::dequeue(int &value)
-{
+bool colaCircular::dequeue(int &value){
 
     if (isEmpty()){
         return false;
     }
 
         value = data[head];
-
         head = (head + 1) % capacity;
         count--;
 
     return true;
 }
 
-int colaCircular::front() const
-{
+int colaCircular::front() const{
 
     if (isEmpty()){
         return -1;
@@ -67,8 +59,7 @@ int colaCircular::front() const
     return data[head];
 }
 
-int colaCircular::rear() const
-{
+int colaCircular::rear() const{
 
     if (isEmpty()){
         return -1;
@@ -79,32 +70,26 @@ int colaCircular::rear() const
     return data[position];
 }
 
-int colaCircular::size() const
-{
+int colaCircular::size() const{
     return count;
 }
 
-int colaCircular::getCapacity() const
-{
+int colaCircular::getCapacity() const{
     return capacity;
 }
 
-void colaCircular::print() const
-{
+void colaCircular::print() const{
 
-    if (isEmpty())
-    {
+    if (isEmpty()){
         std::cout << "[vacia]\n";
         return;
     }
 
     std::cout << "[ ";
 
-    for (int i = 0; i < count; i++)
-    {
+    for (int i = 0; i < count; i++){
 
         int position = (head + i) % capacity;
-
         std::cout << data[position] << " ";
     }
 
