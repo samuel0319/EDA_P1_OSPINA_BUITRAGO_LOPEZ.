@@ -78,10 +78,10 @@ int main() {
 
     string documento = "";
 
-    ifstream archivo("eventos.txt");
+    ifstream archivo("data/eventos.txt");
 
     if (!archivo.is_open()) {
-        cout << "No se pudo abrir el archivo" << endl;
+        cout << "No se pudo abrir el archivo data/eventos.txt" << endl;
         return 1;
     }
 

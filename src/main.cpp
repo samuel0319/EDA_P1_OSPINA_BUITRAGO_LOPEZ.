@@ -12,7 +12,7 @@ int main(){
     int T = 1000;
     int L = 3;
 
-    generarCaso("data/caso1.txt", 10, 123);
+    generarCaso("data/caso1.txt", 5, 123);
     std::ifstream file("data/caso1.txt");
 
     if (!file.is_open()){
